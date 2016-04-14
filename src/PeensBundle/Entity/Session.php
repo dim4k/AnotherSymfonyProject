@@ -42,6 +42,12 @@ class Session
      */
     private $endDate;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="Teacher")
+     * @ORM\JoinColumn(name="teacher_id", referencedColumnName="id", nullable=false)
+     */
+    protected $teacher;
+
 
     /**
      * Get id
@@ -120,5 +126,26 @@ class Session
     public function getEndDate()
     {
         return $this->endDate;
+    }
+
+    /**
+     * Set teacher
+     *
+     * @param Teacher
+     * @return Session
+     */
+    public function setTeacher(Teacher $teacher)
+    {
+        $this->teacher = $teacher;
+        return $this;
+    }
+    /**
+     * Get teacher
+     *
+     * @return Teacher
+     */
+    public function getTeacher()
+    {
+        return $this->teacher;
     }
 }

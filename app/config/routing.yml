@@ -2,6 +2,18 @@ peens_session:
     resource: "@PeensBundle/Controller/SessionController.php"
     type:     annotation
 
+peens_session:
+    resource: "@PeensBundle/Controller/SessionController.php"
+    type:     annotation
+
+peens_session:
+    resource: "@PeensBundle/Controller/SessionController.php"
+    type:     annotation
+
+peens_session:
+    resource: "@PeensBundle/Controller/SessionController.php"
+    type:     annotation
+
 peens_teacher:
     resource: "@PeensBundle/Controller/TeacherController.php"
     type:     annotation

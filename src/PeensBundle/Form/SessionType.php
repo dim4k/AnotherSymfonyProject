@@ -18,6 +18,7 @@ class SessionType extends AbstractType
             ->add('title')
             ->add('startDate', 'datetime')
             ->add('endDate', 'datetime')
+            ->add('teacher')
         ;
     }
     

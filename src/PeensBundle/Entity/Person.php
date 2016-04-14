@@ -94,4 +94,13 @@ class Person
     {
         return $this->lastname;
     }
+
+    /**
+     * toString
+     * @return string
+     */
+    public function __toString()
+    {
+        return $this->getLastname();
+    }
 }
