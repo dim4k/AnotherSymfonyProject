@@ -28,6 +28,18 @@ class Note
      */
     private $note;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="Session")
+     * @ORM\JoinColumn(name="session_id", referencedColumnName="id", nullable=false)
+     */
+    protected $session;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Student")
+     * @ORM\JoinColumn(name="student_id", referencedColumnName="id", nullable=false)
+     */
+    protected $student;
+
 
     /**
      * Get id
@@ -61,4 +73,47 @@ class Note
     {
         return $this->note;
     }
+
+    /**
+     * Set session
+     *
+     * @param Session
+     * @return Note
+     */
+    public function setSession(Session $session)
+    {
+        $this->session = $session;
+        return $this;
+    }
+    /**
+     * Get session
+     *
+     * @return Note
+     */
+    public function getSession()
+    {
+        return $this->session;
+    }
+
+    /**
+     * Set student
+     *
+     * @param Student
+     * @return Note
+     */
+    public function setStudent(Student $student)
+    {
+        $this->student = $student;
+        return $this;
+    }
+    /**
+     * Get student
+     *
+     * @return Note
+     */
+    public function getStudent()
+    {
+        return $this->student;
+    }
+
 }

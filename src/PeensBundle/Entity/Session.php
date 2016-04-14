@@ -148,4 +148,13 @@ class Session
     {
         return $this->teacher;
     }
+
+    /**
+     * toString
+     * @return string
+     */
+    public function __toString()
+    {
+        return $this->getTitle();
+    }
 }

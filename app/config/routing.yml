@@ -1,3 +1,7 @@
+peens_note:
+    resource: "@PeensBundle/Controller/NoteController.php"
+    type:     annotation
+
 peens_session:
     resource: "@PeensBundle/Controller/SessionController.php"
     type:     annotation
