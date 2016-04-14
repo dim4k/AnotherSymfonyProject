@@ -11,7 +11,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Entity(repositoryClass="PeensBundle\Repository\PersonRepository")
  * @ORM\InheritanceType("JOINED")
  * @ORM\DiscriminatorColumn(name="discr", type="string")
- * @ORM\DiscriminatorMap({"student" = "Student", "teacher" = "Teacher", "customer" = "Customer"})
+ * @ORM\DiscriminatorMap({"student" = "Student", "teacher" = "Teacher"})
  */
 class Person
 {
