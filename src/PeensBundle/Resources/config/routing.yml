@@ -1,0 +1,3 @@
+peens_homepage:
+    path:     /
+    defaults: { _controller: PeensBundle:Default:index }
