@@ -1,3 +1,11 @@
+peens_teacher:
+    resource: "@PeensBundle/Controller/TeacherController.php"
+    type:     annotation
+
+peens_student:
+    resource: "@PeensBundle/Controller/StudentController.php"
+    type:     annotation
+
 peens:
     resource: "@PeensBundle/Resources/config/routing.yml"
     prefix:   /

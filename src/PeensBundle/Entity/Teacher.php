@@ -7,15 +7,17 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Teacher
  *
- * @ORM\Table(name="teacher")
- * @ORM\Entity(repositoryClass="PeensBundle\Repository\TeacherRepository")
+ * @ORM\Table()
+ * @ORM\Entity)
  */
 class Teacher extends Person
 {
     /**
+     * @var integer
      *
-     * @ORM\OneToOne(targetEntity="Person")
-     * @ORM\JoinColumn(name="id", referencedColumnName="id")
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
      */
     protected $id;
 

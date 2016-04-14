@@ -22,21 +22,21 @@ class Person
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    private $id;
+    protected $id;
 
     /**
      * @var string
      *
      * @ORM\Column(name="firstname", type="string", length=255)
      */
-    private $firstname;
+    protected $firstname;
 
     /**
      * @var string
      *
      * @ORM\Column(name="lastname", type="string", length=255)
      */
-    private $lastname;
+    protected $lastname;
 
 
     /**
