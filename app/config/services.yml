@@ -12,3 +12,9 @@ services:
     app.student_controller:
         class: PeensBundle\Controller\ApiStudentController
         arguments: [ @templating, @doctrine.orm.entity_manager ]
+
+    app.twig_extension:
+            class: PeensBundle\Twig\AppExtension
+            public: false
+            tags:
+                - { name: twig.extension }

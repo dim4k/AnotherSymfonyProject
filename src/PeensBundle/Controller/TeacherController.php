@@ -11,6 +11,7 @@ use PeensBundle\Entity\Teacher;
 use PeensBundle\Form\TeacherType;
 use Gedmo\Loggable\LoggableListener;
 
+
 /**
  * Teacher controller.
  *
@@ -18,6 +19,7 @@ use Gedmo\Loggable\LoggableListener;
  */
 class TeacherController extends Controller
 {
+    private $LoggableListener;
     /**
      * Lists all Teacher entities.
      *
@@ -43,6 +45,12 @@ class TeacherController extends Controller
      */
     public function newAction(Request $request)
     {
+
+        $evm = new EventManager();
+        $this->LoggableListener = new LoggableListener();
+        $this->LoggableListener->setUsername('jules');
+        $evm->addEventSubscriber($this->LoggableListener);
+
         $teacher = new Teacher();
         $form = $this->createForm('PeensBundle\Form\TeacherType', $teacher);
         $form->handleRequest($request);
