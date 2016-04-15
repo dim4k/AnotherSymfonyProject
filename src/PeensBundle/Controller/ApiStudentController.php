@@ -1,5 +1,6 @@
 <?php
 
+
 namespace PeensBundle\Controller;
 
 use Doctrine\ORM\EntityManager;
@@ -11,15 +12,21 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use PeensBundle\Entity\Student;
 use PeensBundle\Form\StudentType;
+use Symfony\Component\Serializer\Serializer;
+use Symfony\Component\Serializer\Normalizer\GetSetMethodNormalizer;
+use Symfony\Component\Serializer\Encoder\JsonEncoder;
 
-/**
- * Student controller.
- *
- * @Route("/student")
- */
-class StudentController extends Controller
+class ApiStudentController
 {
+    protected $templating;
+    protected $entities;
+    protected $em;
 
+
+    public function __construct(EngineInterface $templating, EntityManager $em){
+        $this->templating = $templating;
+        $this->entities = $em->getRepository('PeensBundle:Student')->findAll();
+    }
     /**
      * Lists all Student entities.
      *
@@ -28,12 +35,15 @@ class StudentController extends Controller
      */
     public function indexAction()
     {
-        $em = $this->getDoctrine()->getManager();
 
-        $students =  $em->getRepository('PeensBundle:Student')->findAll();
+        $students = $this->entities; //$em->getRepository('PeensBundle:Student')->findAll();
 
-        return $this->render('student/index.html.twig', array(
-            'students' => $students,
+        $serializer = new Serializer(array(new GetSetMethodNormalizer()), array('json' => new
+        JsonEncoder()));
+        $json = $serializer->serialize($students, 'json');
+
+        return $this->templating->renderResponse('student/apiindex.html.twig', array(
+            'json' => $json
         ));
     }
 
@@ -71,11 +81,13 @@ class StudentController extends Controller
      */
     public function showAction(Student $student)
     {
-        $deleteForm = $this->createDeleteForm($student);
 
-        return $this->render('student/show.html.twig', array(
-            'student' => $student,
-            'delete_form' => $deleteForm->createView(),
+        $serializer = new Serializer(array(new GetSetMethodNormalizer()), array('json' => new
+        JsonEncoder()));
+        $json = $serializer->serialize($student, 'json');
+
+        return $this->templating->renderResponse('student/apiindex.html.twig', array(
+            'json' => $json
         ));
     }
 
@@ -139,6 +151,6 @@ class StudentController extends Controller
             ->setAction($this->generateUrl('student_delete', array('id' => $student->getId())))
             ->setMethod('DELETE')
             ->getForm()
-        ;
+            ;
     }
 }

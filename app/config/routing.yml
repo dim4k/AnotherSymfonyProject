@@ -6,18 +6,6 @@ peens_session:
     resource: "@PeensBundle/Controller/SessionController.php"
     type:     annotation
 
-peens_session:
-    resource: "@PeensBundle/Controller/SessionController.php"
-    type:     annotation
-
-peens_session:
-    resource: "@PeensBundle/Controller/SessionController.php"
-    type:     annotation
-
-peens_session:
-    resource: "@PeensBundle/Controller/SessionController.php"
-    type:     annotation
-
 peens_teacher:
     resource: "@PeensBundle/Controller/TeacherController.php"
     type:     annotation
@@ -29,3 +17,11 @@ peens_student:
 peens:
     resource: "@PeensBundle/Resources/config/routing.yml"
     prefix:   /
+
+hello:
+    path:   /students
+    defaults: { _controller: app.student_controller:indexAction }
+
+hello2:
+    path:   /students/{id}
+    defaults: { _controller: app.student_controller:showAction }
