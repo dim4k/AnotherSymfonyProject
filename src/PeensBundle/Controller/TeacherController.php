@@ -2,12 +2,14 @@
 
 namespace PeensBundle\Controller;
 
+use Doctrine\Common\EventManager;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use PeensBundle\Entity\Teacher;
 use PeensBundle\Form\TeacherType;
+use Gedmo\Loggable\LoggableListener;
 
 /**
  * Teacher controller.

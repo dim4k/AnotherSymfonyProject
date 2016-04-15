@@ -3,6 +3,7 @@
 namespace PeensBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
  * Person
@@ -12,12 +13,15 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\InheritanceType("JOINED")
  * @ORM\DiscriminatorColumn(name="discr", type="string")
  * @ORM\DiscriminatorMap({"student" = "Student", "teacher" = "Teacher"})
+ * @Gedmo\Loggable
  */
 class Person
 {
+
     /**
      * @var int
      *
+     * @Gedmo\Versioned
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
