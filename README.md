@@ -41,7 +41,7 @@ It will install all the components needed for this Symfony project.
 
 ##### Run the server
 
-Make sure your MySql server is runing and check your database parameters in app/config/parameters.yml , then un those commands :
+Make sure your MySql server is runing and check your database parameters in app/config/parameters.yml , then run those commands :
 
 ```sh
 php app/console doctrine:database:create
