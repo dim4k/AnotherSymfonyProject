@@ -21,11 +21,12 @@ class ApiStudentController
     protected $templating;
     protected $entities;
     protected $em;
-
+    protected $serializer;
 
     public function __construct(EngineInterface $templating, EntityManager $em){
         $this->templating = $templating;
         $this->entities = $em->getRepository('PeensBundle:Student')->findAll();
+        $this->serializer = new Serializer(array(new GetSetMethodNormalizer()), array('json' => new JsonEncoder()));
     }
     /**
      * Lists all Student entities.
@@ -35,13 +36,8 @@ class ApiStudentController
      */
     public function indexAction()
     {
-
-        $students = $this->entities; //$em->getRepository('PeensBundle:Student')->findAll();
-
-        $serializer = new Serializer(array(new GetSetMethodNormalizer()), array('json' => new
-        JsonEncoder()));
-        $json = $serializer->serialize($students, 'json');
-
+        $students = $this->entities;
+        $json = $this->serializer->serialize($students, 'json');
         return $this->templating->renderResponse('student/apiindex.html.twig', array(
             'json' => $json
         ));
@@ -81,10 +77,7 @@ class ApiStudentController
      */
     public function showAction(Student $student)
     {
-
-        $serializer = new Serializer(array(new GetSetMethodNormalizer()), array('json' => new
-        JsonEncoder()));
-        $json = $serializer->serialize($student, 'json');
+        $json = $this->serializer->serialize($student, 'json');
 
         return $this->templating->renderResponse('student/apiindex.html.twig', array(
             'json' => $json
